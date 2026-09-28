@@ -3,143 +3,165 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#3e68c4">
-  <title>蓓蓓英语｜Unit 1 单词学习</title>
+  <meta name="theme-color" content="#fa7780">
+  <title>蓓蓓英语｜单词学习</title>
   <style>
-    :root { --blue: #3866c8; --blue-deep: #244b9a; --blue-pale: #eef4ff; --ink: #1e2a44; --muted: #65738c; --line: #d8e2f5; --paper: #fff; --gold: #ffbd3d; }
-    * { box-sizing: border-box; }
-    body { min-width: 320px; margin: 0; color: var(--ink); background: linear-gradient(135deg, #e9f1ff, #f9fbff 42%, #e9f7ff); font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif; }
-    .page { width: min(1120px, calc(100% - 32px)); margin: 32px auto; overflow: hidden; border: 1px solid #cbd9f2; border-radius: 20px; background: var(--paper); box-shadow: 0 16px 42px #294b8a24; }
-    .hero { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 25px 30px; color: white; background: linear-gradient(120deg, #315bb4, #5787e5); }
-    .brand { display: flex; align-items: center; gap: 13px; }
-    .brand-mark { display: grid; width: 52px; height: 52px; place-items: center; border: 2px solid #ffffff8c; border-radius: 16px; background: #ffffff1f; font-size: 27px; }
-    .brand-name { margin: 0; font-size: clamp(25px, 4vw, 35px); letter-spacing: .06em; }
-    .brand-subtitle { margin: 4px 0 0; color: #e5edff; font-size: 14px; letter-spacing: .08em; }
-    .unit { margin: 0; max-width: 440px; text-align: right; font-weight: 700; font-size: clamp(16px, 2.5vw, 21px); line-height: 1.45; }
-    .tools { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 18px 22px; background: #f8faff; border-bottom: 1px solid var(--line); }
-    .search { position: relative; flex: 1 1 270px; }
-    .search-icon { position: absolute; top: 10px; left: 13px; color: #5873aa; font-size: 18px; }
-    input { width: 100%; min-height: 42px; padding: 0 13px 0 39px; border: 1px solid #aac0e9; border-radius: 9px; color: var(--ink); background: white; font: inherit; outline-color: var(--blue); }
-    .rates { display: flex; align-items: center; gap: 7px; }
-    .rates-label { color: #48608c; font-size: 14px; font-weight: 700; white-space: nowrap; }
-    .rate { min-width: 47px; min-height: 36px; padding: 0 7px; border: 1px solid #aac0e9; border-radius: 7px; color: var(--blue-deep); background: white; font-weight: 700; cursor: pointer; }
-    .rate:hover, .rate.active { border-color: var(--blue); color: white; background: var(--blue); }
-    .instruction { margin: 0; padding: 13px 22px; color: var(--muted); background: #fffdf7; border-bottom: 1px solid #f1e4be; font-size: 14px; }
-    .instruction strong { color: #8a6815; }
-    .table-wrap { overflow-x: auto; }
-    table { width: 100%; min-width: 730px; border-collapse: collapse; table-layout: fixed; }
-    th, td { min-height: 50px; padding: 9px 8px; border-bottom: 1px solid var(--line); text-align: center; font-size: 16px; }
-    thead th { color: #315489; background: #edf3ff; font-size: 15px; }
-    tbody tr:not(.section):hover { background: #f6f9ff; }
-    .section td { padding: 11px 20px; color: white; background: #5c83d5; text-align: left; font-weight: 700; letter-spacing: .02em; }
-    .number { width: 9%; } .word-col { width: 22%; } .ipa { width: 23%; } .type { width: 12%; } .meaning { width: 25%; } .play-col { width: 9%; }
-    .word { color: #253c70; font-weight: 700; }
-    .play { display: inline-grid; width: 36px; height: 36px; place-items: center; border: 0; border-radius: 50%; color: white; background: var(--blue); box-shadow: 0 3px 8px #315aa847; cursor: pointer; transition: transform .15s, background .15s; }
-    .play:hover { background: var(--blue-deep); transform: translateY(-1px) scale(1.05); }
-    .play.playing { color: #4d3a00; background: var(--gold); }
-    .play:focus-visible, .rate:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-    .play svg { width: 18px; height: 18px; margin-left: 2px; fill: currentColor; }
-    .empty { display: none; margin: 0; padding: 34px 20px; color: var(--muted); text-align: center; }
-    .footer { padding: 16px 22px; color: #6d7d98; background: #f8faff; text-align: center; font-size: 13px; }
-    @media (max-width: 650px) { .page { width: 100%; margin: 0; border: 0; border-radius: 0; } .hero { align-items: flex-start; padding: 20px 17px; } .unit { display: none; } .tools { padding: 14px; } .instruction { padding: 11px 14px; } }
+    :root { --pink:#fa777c; --teal:#47c9c4; --blue:#3a83ef; --ink:#27313a; --muted:#858d9c; --page:#f1f5f8; --line:#e5e9ee; }
+    * { box-sizing:border-box; }
+    body { min-width:320px; min-height:100vh; margin:0; color:var(--ink); background:var(--page); font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif; }
+    button,input { font:inherit; }
+    button { border:0; cursor:pointer; }
+    .welcome { display:grid; min-height:100vh; place-items:center; padding:28px; background:#fff; transition:opacity .45s ease, transform .45s ease; }
+    .welcome.leaving { opacity:0; transform:scale(.985); pointer-events:none; }
+    .welcome-inner { display:flex; width:min(100%,420px); min-height:min(410px,calc(100vh - 56px)); flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+    .brand-orb { display:grid; width:78px; height:78px; place-items:center; border-radius:50%; background:linear-gradient(135deg,#f5878c,#44c7c1); box-shadow:0 7px 15px #4d59603b; }
+    .brand-orb__inside { display:flex; width:68px; height:68px; align-items:center; justify-content:center; border-radius:50%; background:#fff; color:#29323a; font-family:Georgia,"Times New Roman",serif; font-size:14px; font-weight:bold; }
+    .brand-orb__inside b { color:#3ebac1; font-size:25px; font-style:italic; }
+    .welcome h1 { margin:38px 0 9px; font-size:22px; letter-spacing:.01em; }
+    .welcome p { margin:0; color:#7c8490; font-size:13px; }
+    .start { width:142px; margin-top:27px; padding:13px 15px; border-radius:24px; color:#fff; background:linear-gradient(100deg,#fa757a,#f28c98 42%,#45c9c2); box-shadow:0 8px 15px #d77c8660; font-size:16px; font-weight:700; transition:transform .18s,box-shadow .18s; }
+    .start:hover { transform:translateY(-2px); box-shadow:0 11px 20px #d77c8680; }
+    .start:focus-visible,.word-card:focus-visible,.icon-button:focus-visible,.control:focus-visible,.tab:focus-visible { outline:3px solid #f4ba40; outline-offset:2px; }
+
+    .learning { display:none; min-height:100vh; padding-bottom:118px; }
+    .learning.visible { display:block; animation:page-in .42s ease both; }
+    @keyframes page-in { from { opacity:0; transform:translateY(9px); } to { opacity:1; transform:none; } }
+    .topbar { display:flex; height:58px; align-items:center; gap:22px; padding:0 max(20px,calc((100vw - 970px)/2)); background:#fff; border-bottom:1px solid var(--line); }
+    .logo { display:flex; flex:0 0 auto; align-items:center; color:#202a31; font-family:Georgia,"Times New Roman",serif; font-size:20px; font-weight:bold; white-space:nowrap; }
+    .logo-mark { display:grid; width:22px; height:22px; margin-right:4px; place-items:center; border-radius:5px; color:#fff; background:#3eb9d4; font-family:Arial,sans-serif; font-size:18px; font-style:italic; }
+    .search-wrap { position:relative; flex:1; max-width:650px; }
+    .search-wrap::before { position:absolute; top:50%; left:15px; color:#9da5af; content:"⌕"; font-size:22px; transform:translateY(-53%); }
+    #search { width:100%; height:35px; padding:0 16px 0 39px; border:1px solid #e1e5ea; border-radius:20px; outline-color:var(--pink); color:var(--ink); background:#fafbfc; font-size:13px; }
+    .top-icon { display:grid; width:28px; height:28px; place-items:center; border-radius:50%; color:#444d57; background:#f3f5f6; font-size:15px; }
+    .tabs { display:flex; justify-content:center; background:#fff; border-bottom:1px solid var(--line); }
+    .tab { position:relative; width:min(25%,245px); padding:14px 10px 13px; color:#626b79; background:transparent; font-size:14px; font-weight:700; }
+    .tab.active { color:var(--pink); background:#fffafa; }
+    .tab.active::after { position:absolute; right:0; bottom:-1px; left:0; height:2px; background:var(--pink); content:""; }
+    .content { width:min(100% - 32px,980px); margin:0 auto; padding-top:22px; }
+    .lesson-title { margin:0; text-align:center; font-size:24px; }
+    .lesson-note { margin:6px 0 33px; color:var(--pink); text-align:center; font-size:13px; font-weight:700; }
+    .part-heading { margin-bottom:15px; padding:8px 16px; border-radius:7px; color:#fff; background:var(--blue); text-align:center; font-size:14px; font-weight:700; }
+    .word-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .word-card { position:relative; display:flex; min-height:126px; padding:21px 35px 19px; align-items:center; justify-content:center; flex-direction:column; border:2px solid transparent; border-radius:11px; color:var(--ink); background:#fff; box-shadow:0 4px 12px #40516a0d; transition:transform .18s,border-color .18s,box-shadow .18s,background .18s; }
+    .word-card:hover { transform:translateY(-2px); box-shadow:0 8px 18px #40516a1b; }
+    .word-card.playing { border-color:#fa9a9e; background:linear-gradient(135deg,#fffafa,#f8fffe); box-shadow:0 8px 18px #ed9ca34d; }
+    .number { position:absolute; top:14px; right:15px; display:grid; min-width:19px; height:19px; place-items:center; border-radius:4px; color:#8791a0; background:#f3f5f7; font-size:11px; }
+    .english { text-align:center; font-size:16px; font-weight:800; line-height:1.3; }
+    .ipa { margin-top:7px; color:#667080; font-family:Georgia,serif; font-size:12px; text-align:center; }
+    .meaning { margin-top:7px; color:#079cca; font-size:13px; font-weight:700; text-align:center; }
+    .word-part { margin-top:5px; color:#9aa2ad; font-size:10px; }
+    .card-play { position:absolute; right:10px; bottom:10px; width:25px; height:25px; border-radius:50%; color:#fff; background:var(--blue); font-size:11px; opacity:0; transform:scale(.8); transition:opacity .18s,transform .18s; }
+    .word-card:hover .card-play,.word-card.playing .card-play,.card-play:focus-visible { opacity:1; transform:scale(1); }
+    .empty { display:none; padding:45px 10px; color:var(--muted); text-align:center; }
+
+    .control-bar { position:fixed; z-index:5; bottom:18px; left:50%; display:flex; min-width:310px; padding:9px 15px; align-items:center; justify-content:center; gap:12px; border-radius:14px; background:#fff; box-shadow:0 10px 28px #43516b30; transform:translateX(-50%); }
+    .control { display:grid; width:32px; height:32px; place-items:center; border-radius:50%; color:#53606d; background:#f5f7f8; font-size:13px; font-weight:700; }
+    .control.active { color:#fff; background:linear-gradient(135deg,var(--pink),var(--teal)); }
+    .control-main { width:46px; height:46px; color:#fff; background:linear-gradient(135deg,var(--pink),var(--teal)); font-size:17px; }
+    .speed { width:40px; border-radius:18px; font-size:11px; }
+    .stop { color:#fa5f67; background:#fff4f5; }
+    @media (max-width:700px) { .topbar { gap:10px; padding:0 14px; } .logo { font-size:16px; } .top-icon { display:none; } .content { width:min(100% - 24px,980px); } .word-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media (max-width:440px) { .word-grid { grid-template-columns:1fr; } .lesson-note { margin-bottom:22px; } .tab { font-size:12px; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; } }
   </style>
 </head>
 <body>
-  <main class="page">
-    <header class="hero">
-      <div class="brand"><div class="brand-mark" aria-hidden="true">B</div><div><h1 class="brand-name">蓓蓓英语</h1><p class="brand-subtitle">BEIBEI ENGLISH · 快乐学单词</p></div></div>
-      <p class="unit">Unit 1 · Having a good time<br>单词学习卡</p>
-    </header>
-    <section class="tools" aria-label="学习工具">
-      <label class="search"><span class="search-icon" aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索英文、音标、中文或词性…" aria-label="搜索单词"></label>
-      <div class="rates" aria-label="播放速度"><span class="rates-label">播放速度</span><button class="rate" type="button" data-rate="0.75">0.75×</button><button class="rate active" type="button" data-rate="1">1×</button><button class="rate" type="button" data-rate="1.25">1.25×</button></div>
-    </section>
-    <p class="instruction"><strong>学习提示：</strong>点击右侧播放按钮，聆听单词的英式发音；可按需要调整播放速度。</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th class="number">序号</th><th class="word-col">单词</th><th class="ipa">音标</th><th class="type">词性</th><th class="meaning">中文释义</th><th class="play-col">发音</th></tr></thead>
-        <tbody id="vocabulary">
-          <tr class="section"><td colspan="6">阅读词汇：What do you do in your FREETIME?</td></tr>
-          <tr data-word="usually"><td>1</td><td class="word">usually</td><td>/ˈjuːʒuəli/</td><td>adv.</td><td>经常；通常</td><td></td></tr>
-          <tr data-word="rarely"><td>2</td><td class="word">rarely</td><td>/ˈreəli/</td><td>adv.</td><td>罕有；很少</td><td></td></tr>
-          <tr data-word="sometimes"><td>3</td><td class="word">sometimes</td><td>/ˈsʌmtaɪmz/</td><td>adv.</td><td>有时候</td><td></td></tr>
-          <tr data-word="never"><td>4</td><td class="word">never</td><td>/ˈnevə(r)/</td><td>adv.</td><td>从不</td><td></td></tr>
-          <tr class="section"><td colspan="6">拓展词汇：兴趣爱好</td></tr>
-          <tr data-word="camping"><td>5</td><td class="word">camping</td><td>/ˈkæmpɪŋ/</td><td>n.</td><td>露营；宿营</td><td></td></tr>
-          <tr data-word="camp"><td>6</td><td class="word">camp</td><td>/kæmp/</td><td>n.</td><td>营帐</td><td></td></tr>
-          <tr data-word="campsite"><td>7</td><td class="word">campsite</td><td>/ˈkæmpsaɪt/</td><td>n.</td><td>野营地</td><td></td></tr>
-          <tr data-word="tent"><td>8</td><td class="word">tent</td><td>/tent/</td><td>n.</td><td>帐篷</td><td></td></tr>
-          <tr data-word="barbecue"><td>9</td><td class="word">barbecue</td><td>/ˈbɑːbɪkjuː/</td><td>n.</td><td>烧烤；户外烧烤</td><td></td></tr>
-          <tr data-word="bicycle"><td>10</td><td class="word">bicycle</td><td>/ˈbaɪsɪkl/</td><td>n.</td><td>自行车</td><td></td></tr>
-          <tr data-word="bike"><td>11</td><td class="word">bike</td><td>/baɪk/</td><td>n.</td><td>自行车</td><td></td></tr>
-          <tr data-word="cycling"><td>12</td><td class="word">cycling</td><td>/ˈsaɪklɪŋ/</td><td>v.</td><td>骑自行车</td><td></td></tr>
-          <tr data-word="reading"><td>13</td><td class="word">reading</td><td>/ˈriːdɪŋ/</td><td>n.</td><td>阅读</td><td></td></tr>
-          <tr data-word="painting"><td>14</td><td class="word">painting</td><td>/ˈpeɪntɪŋ/</td><td>n.</td><td>画画</td><td></td></tr>
-          <tr data-word="writing"><td>15</td><td class="word">writing</td><td>/ˈraɪtɪŋ/</td><td>n.</td><td>写作</td><td></td></tr>
-          <tr data-word="singing"><td>16</td><td class="word">singing</td><td>/ˈsɪŋɪŋ/</td><td>n.</td><td>歌唱</td><td></td></tr>
-          <tr data-word="dancing"><td>17</td><td class="word">dancing</td><td>/ˈdɑːnsɪŋ/</td><td>n.</td><td>跳舞</td><td></td></tr>
-          <tr data-word="playing basketball"><td>18</td><td class="word">playing basketball</td><td>/ˈpleɪɪŋ ˈbɑːskɪtbɔːl/</td><td>phrase</td><td>打篮球</td><td></td></tr>
-          <tr data-word="swimming"><td>19</td><td class="word">swimming</td><td>/ˈswɪmɪŋ/</td><td>n.</td><td>游泳</td><td></td></tr>
-          <tr data-word="hiking"><td>20</td><td class="word">hiking</td><td>/ˈhaɪkɪŋ/</td><td>n.</td><td>徒步</td><td></td></tr>
-          <tr data-word="running"><td>21</td><td class="word">running</td><td>/ˈrʌnɪŋ/</td><td>n.</td><td>跑步</td><td></td></tr>
-          <tr data-word="surfing"><td>22</td><td class="word">surfing</td><td>/ˈsɜːfɪŋ/</td><td>n.</td><td>冲浪</td><td></td></tr>
-          <tr data-word="cooking"><td>23</td><td class="word">cooking</td><td>/ˈkʊkɪŋ/</td><td>n.</td><td>烹饪</td><td></td></tr>
-        </tbody>
-      </table>
-      <p id="empty" class="empty">没有找到匹配的单词，请换一个关键词试试。</p>
+  <section id="welcome" class="welcome" aria-labelledby="welcome-title">
+    <div class="welcome-inner">
+      <div class="brand-orb" aria-label="蓓蓓英语标志"><div class="brand-orb__inside"><b>B</b>蓓蓓英语</div></div>
+      <h1 id="welcome-title">欢迎来到蓓蓓英语！</h1>
+      <p>Be Better Studio - 开启智能学习之旅</p>
+      <button id="start" class="start" type="button">开始学习</button>
     </div>
-    <footer class="footer">蓓蓓英语 · 每天听一听，说一说，英语进步一点点。</footer>
+  </section>
+
+  <main id="learning" class="learning" aria-hidden="true">
+    <header class="topbar">
+      <div class="logo"><span class="logo-mark">B</span>蓓蓓英语</div>
+      <label class="search-wrap"><input id="search" type="search" placeholder="搜索单词或序号..." aria-label="搜索单词或序号"></label>
+      <span class="top-icon" aria-hidden="true">▣</span>
+    </header>
+    <nav id="tabs" class="tabs" aria-label="单词部分"></nav>
+    <section class="content" aria-labelledby="lesson-title">
+      <h1 id="lesson-title" class="lesson-title">Unit 1 Having a good time</h1>
+      <p id="lesson-note" class="lesson-note">标注：重点 / 阅读 / 拓展词汇</p>
+      <div id="part-heading" class="part-heading"></div>
+      <div id="word-grid" class="word-grid" aria-live="polite"></div>
+      <p id="empty" class="empty">没有找到匹配的单词。</p>
+    </section>
+    <div class="control-bar" aria-label="播放控制">
+      <button id="loop" class="control" type="button" aria-label="切换循环播放" title="循环播放">⟳</button>
+      <button id="speed" class="control speed" type="button" aria-label="切换播放速度">1.0×</button>
+      <button id="play" class="control control-main" type="button" aria-label="播放当前单词" title="播放">▶</button>
+      <button id="stop" class="control stop" type="button" aria-label="停止播放" title="停止">■</button>
+    </div>
   </main>
+
   <script>
-    const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
-    let rate = 1;
-    let currentAudio;
-    let activeButton;
+    const parts = [
+      { name: 'Part 1', heading: '重点词汇：Hobbies / 阅读词汇：What do you do in your FREETIME?', words: [
+        ['play an instrument', '/pleɪ ən ˈɪnstrəmənt/', 'phrase', '演奏乐器'], ['be in a club', '/biː ɪn ə klʌb/', 'phrase', '加入俱乐部'], ['write a blog', '/raɪt ə blɒɡ/', 'phrase', '写博客'], ['take photos', '/teɪk ˈfəʊtəʊz/', 'phrase', '拍照；照相'], ['keep a pet', '/kiːp ə pet/', 'phrase', '养宠物'], ['collect things', '/kəˈlekt θɪŋz/', 'phrase', '收藏物品'],
+        ['video', '/ˈvɪdiəʊ/', 'n.', '视频；录像'], ['try to do sth.', '/traɪ tə duː ˈsʌmθɪŋ/', 'phrase', '尝试做某事'], ['different', '/ˈdɪfrənt/', 'adj.', '不同的；各种的'], ['card', '/kɑːd/', 'n.', '纸牌游戏；银行卡'], ['notebook', '/ˈnəʊtbʊk/', 'n.', '笔记本'], ['T-shirt', '/ˈtiːʃɜːt/', 'n.', 'T恤衫；短袖'], ['at home', '/æt həʊm/', 'phrase', '在家里'], ['because', '/bɪˈkɒz/', 'conj.', '因为'], ['stand', '/stænd/', 'v.', '忍受；站立'], ['have nothing to do', '/hæv ˈnʌθɪŋ tə duː/', 'phrase', '没事可做的'], ['for example', '/fɔːr ɪɡˈzɑːmpl/', 'phrase', '例如'], ['wait for', '/weɪt fɔː/', 'phrase', '等待；等候'], ['in the queue', '/ɪn ðə kjuː/', 'phrase', '在队伍中；排队'], ['fast food', '/fɑːst fuːd/', 'phrase', '快餐'], ['puzzle', '/ˈpʌzl/', 'n.', '拼图；字谜游戏'], ['mobile', '/ˈməʊbaɪl/', 'adj.', '可移动的'], ['crossword', '/ˈkrɒswɜːd/', 'n.', '字谜；填字游戏'], ["It doesn't matter", '/ɪt ˈdʌznt ˈmætə/', 'phrase', '无所谓；无关紧要']
+      ] },
+      { name: 'Part 2', heading: '阅读词汇：What do you do in your FREETIME?', words: [
+        ['bored', '/bɔːd/', 'adj.', '感到无聊的'], ['occasionally', '/əˈkeɪʒnəli/', 'adv.', '偶尔；有时候'], ['a bit', '/ə bɪt/', 'phrase', '稍微；有点儿'], ['especially', '/ɪˈspeʃəli/', 'adv.', '特别；尤其'], ['favourite', '/ˈfeɪvərɪt/', 'adj.', '最喜欢的'], ['look at', '/lʊk æt/', 'phrase', '看；盯着'], ['map', '/mæp/', 'n.', '地图'], ['online', '/ˈɒnlaɪn/', 'adj.', '在线的；上网的'], ['street view', '/striːt vjuː/', 'n.', '街景'], ['imagine', '/ɪˈmædʒɪn/', 'v.', '想象；设想'], ['visit', '/ˈvɪzɪt/', 'v.', '参观'], ['at least', '/æt liːst/', 'phrase', '至少'], ['in the world', '/ɪn ðə wɜːld/', 'phrase', '在世界上'], ['once a week', '/wʌns ə wiːk/', 'phrase', '一周一次'], ['hate', '/heɪt/', 'v.', '讨厌；憎恨'], ['exercise', '/ˈeksəsaɪz/', 'v.', '锻炼；练习'], ['crazy', '/ˈkreɪzi/', 'adj.', '疯狂的；狂热的'], ['rugby team', '/ˈrʌɡbi tiːm/', 'phrase', '橄榄球队'], ['newspaper', '/ˈnjuːzˌpeɪpə/', 'n.', '报纸'], ['article', '/ˈɑːtɪkl/', 'n.', '文章；报道'], ['on the internet', '/ɒn ði ˈɪntənet/', 'phrase', '在网络上'], ['free time', '/friː taɪm/', 'phrase', '空闲时间；业余时间'], ['somewhere', '/ˈsʌmweə/', 'adv.', '在某处；某个地方'], ['always', '/ˈɔːlweɪz/', 'adv.', '总是'], ['often', '/ˈɒf(ə)n/', 'adv.', '经常；常常']
+      ] },
+      { name: 'Part 3', heading: '阅读词汇 / 拓展词汇：兴趣爱好类', words: [
+        ['usually', '/ˈjuːʒuəli/', 'adv.', '经常；通常'], ['rarely', '/ˈreəli/', 'adv.', '罕有；很少'], ['sometimes', '/ˈsʌmtaɪmz/', 'adv.', '有时候'], ['never', '/ˈnevə(r)/', 'adv.', '从不'], ['camping', '/ˈkæmpɪŋ/', 'n.', '露营；宿营'], ['camp', '/kæmp/', 'n.', '营帐'], ['campsite', '/ˈkæmpsaɪt/', 'n.', '野营地'], ['tent', '/tent/', 'n.', '帐篷'], ['barbecue', '/ˈbɑːbɪkjuː/', 'n.', '烧烤；户外烧烤'], ['bicycle', '/ˈbaɪsɪkl/', 'n.', '自行车'], ['bike', '/baɪk/', 'n.', '自行车'], ['cycling', '/ˈsaɪklɪŋ/', 'v.', '骑自行车'], ['reading', '/ˈriːdɪŋ/', 'n.', '阅读'], ['painting', '/ˈpeɪntɪŋ/', 'n.', '画画'], ['writing', '/ˈraɪtɪŋ/', 'n.', '写作'], ['singing', '/ˈsɪŋɪŋ/', 'n.', '歌唱'], ['dancing', '/ˈdɑːnsɪŋ/', 'n.', '跳舞'], ['playing basketball', '/ˈpleɪɪŋ ˈbɑːskɪtbɔːl/', 'phrase', '打篮球'], ['swimming', '/ˈswɪmɪŋ/', 'n.', '游泳'], ['hiking', '/ˈhaɪkɪŋ/', 'n.', '徒步'], ['running', '/ˈrʌnɪŋ/', 'n.', '跑步'], ['surfing', '/ˈsɜːfɪŋ/', 'n.', '冲浪'], ['cooking', '/ˈkʊkɪŋ/', 'n.', '烹饪']
+      ] },
+      { name: 'Part 4', heading: '拓展词汇：兴趣爱好类', words: [
+        ['gardening', '/ˈɡɑːdnɪŋ/', 'n.', '园艺'], ['doing yoga', '/ˈduːɪŋ ˈjəʊɡə/', 'phrase', '瑜伽'], ['traveling', '/ˈtrævlɪŋ/', 'n.', '旅行'], ['watching movies', '/ˈwɒtʃɪŋ ˈmuːviz/', 'phrase', '看电影'], ['listening to music', '/ˈlɪsnɪŋ tə ˈmjuːzɪk/', 'phrase', '听音乐'], ['playing board games', '/ˈpleɪɪŋ ˈbɔːd ɡeɪmz/', 'phrase', '玩桌游'], ['playing computer games', '/ˈpleɪɪŋ kəmˈpjuːtə ˈɡeɪmz/', 'phrase', '玩电脑游戏'], ['playing video games', '/ˈpleɪɪŋ ˈvɪdiəʊ ˈɡeɪmz/', 'phrase', '玩电子游戏'], ['doing DIY', '/ˈduːɪŋ diː aɪ ˈwaɪ/', 'phrase', '手工创作'], ['making clay work', '/ˈmeɪkɪŋ kleɪ wɜːk/', 'phrase', '做陶艺'], ['knitting', '/ˈnɪtɪŋ/', 'n.', '编织'], ['doing puzzles', '/ˈduːɪŋ ˈpʌzlz/', 'phrase', '猜谜'], ['riding a bike', '/ˈraɪdɪŋ ə baɪk/', 'phrase', '骑自行车'], ['bird watching', '/ˈbɜːd ˈwɒtʃɪŋ/', 'phrase', '观鸟'], ['rock climbing', '/ˈrɒk ˈklaɪmɪŋ/', 'phrase', '攀岩'], ['fishing', '/ˈfɪʃɪŋ/', 'n.', '钓鱼'], ['kayaking', '/ˈkaɪækɪŋ/', 'n.', '皮划艇'], ['baking', '/ˈbeɪkɪŋ/', 'n.', '烘焙'], ['vlogging', '/ˈvlɒɡɪŋ/', 'n.', '拍vlog'], ['street dance', '/ˈstriːt dɑːns/', 'phrase', '街舞'], ['watching TV', '/ˈwɒtʃɪŋ ˌtiː ˈviː/', 'phrase', '看电视'], ['solving sudoku', '/ˈsɒlvɪŋ suːˈdəʊkuː/', 'phrase', '做数独'], ['doing kung fu', '/ˈduːɪŋ ˌkʌŋ ˈfuː/', 'phrase', '练功夫'], ['having a picnic', '/ˈhævɪŋ ə ˈpɪknɪk/', 'phrase', '野餐'], ['city walking', '/ˈsɪti ˈwɔːkɪŋ/', 'phrase', '城市漫步']
+      ] }
+    ];
 
-    function setPlaying(button, playing) {
-      if (activeButton && activeButton !== button) activeButton.classList.remove('playing');
-      activeButton = playing ? button : null;
-      button.classList.toggle('playing', playing);
+    const welcome = document.querySelector('#welcome');
+    const learning = document.querySelector('#learning');
+    const tabs = document.querySelector('#tabs');
+    const grid = document.querySelector('#word-grid');
+    const partHeading = document.querySelector('#part-heading');
+    const empty = document.querySelector('#empty');
+    let currentPart = 0, currentWord = null, audio = null, repeatCount = 0, loopEnabled = false, playbackRate = 1;
+
+    function femaleVoice(language) {
+      const voices = speechSynthesis.getVoices().filter(v => v.lang.toLowerCase().startsWith(language));
+      return voices.find(v => /female|zira|susan|hazel|samantha|aria|xiaoxiao|huihui|yaoyao/i.test(v.name)) || voices[0] || null;
     }
+    function say(text, language, done) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = language; utterance.rate = .86; utterance.voice = femaleVoice(language.slice(0, 2));
+      utterance.onend = done; utterance.onerror = done; speechSynthesis.speak(utterance);
+    }
+    function finishWelcome() { welcome.classList.add('leaving'); setTimeout(() => { welcome.hidden = true; learning.classList.add('visible'); learning.setAttribute('aria-hidden', 'false'); }, 430); }
+    document.querySelector('#start').addEventListener('click', () => { speechSynthesis.cancel(); say('welcome to be better studio', 'en-GB', () => say('欢迎来到蓓蓓英语工作室', 'zh-CN', finishWelcome)); });
 
-    document.querySelectorAll('tr[data-word]').forEach((row) => {
-      const word = row.dataset.word;
-      const cell = row.lastElementChild;
-      cell.innerHTML = `<button class="play" type="button" aria-label="播放 ${word} 的英式发音" title="播放 ${word}">${playIcon}</button>`;
-      const button = cell.querySelector('button');
-      button.addEventListener('click', () => {
-        if (currentAudio) currentAudio.pause();
-        currentAudio = new Audio(`https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(word)}&type=2`);
-        currentAudio.playbackRate = rate;
-        setPlaying(button, true);
-        currentAudio.addEventListener('ended', () => setPlaying(button, false), { once: true });
-        currentAudio.addEventListener('error', () => setPlaying(button, false), { once: true });
-        currentAudio.play().catch(() => { setPlaying(button, false); alert('发音加载失败，请检查网络连接后重试。'); });
-      });
-    });
-
-    document.querySelectorAll('.rate').forEach((button) => button.addEventListener('click', () => {
-      rate = Number(button.dataset.rate);
-      document.querySelectorAll('.rate').forEach((item) => item.classList.toggle('active', item === button));
-      if (currentAudio) currentAudio.playbackRate = rate;
-    }));
-
-    document.querySelector('#search').addEventListener('input', (event) => {
-      const query = event.target.value.trim().toLowerCase();
-      let visible = 0;
-      document.querySelectorAll('tr[data-word]').forEach((row) => {
-        const match = row.textContent.toLowerCase().includes(query);
-        row.hidden = !match;
-        if (match) visible += 1;
-      });
-      document.querySelectorAll('.section').forEach((section) => {
-        let next = section.nextElementSibling;
-        let show = false;
-        while (next && !next.classList.contains('section')) { if (!next.hidden) show = true; next = next.nextElementSibling; }
-        section.hidden = !show;
-      });
-      document.querySelector('#empty').style.display = visible ? 'none' : 'block';
-    });
+    function renderTabs() { tabs.innerHTML = ''; parts.forEach((part, index) => { const tab = document.createElement('button'); tab.className = `tab${index === currentPart ? ' active' : ''}`; tab.type = 'button'; tab.textContent = part.name; tab.addEventListener('click', () => { stopAudio(); currentPart = index; document.querySelector('#search').value = ''; render(); }); tabs.append(tab); }); }
+    function render() {
+      const part = parts[currentPart], query = document.querySelector('#search').value.trim().toLowerCase();
+      partHeading.textContent = query ? '全局搜索结果' : part.heading; grid.innerHTML = '';
+      const searchScope = query ? parts.flatMap((entry, partIndex) => entry.words.map((word, index) => ({ word, index, partIndex }))) : part.words.map((word, index) => ({ word, index, partIndex: currentPart }));
+      const matching = searchScope.filter(({ word, index }) => !query || `${index + 1} ${word.join(' ')}`.toLowerCase().includes(query));
+      matching.forEach(({ word, index, partIndex }) => { const [english, ipa, pos, meaning] = word; const card = document.createElement('article'); card.className = 'word-card'; card.tabIndex = 0; card.setAttribute('role', 'button'); card.setAttribute('aria-label', `播放 ${english}，${pos}，${meaning}`); card.innerHTML = `<span class="number">${index + 1}</span><span class="english">${english}</span><span class="ipa">${ipa}</span><span class="meaning">${pos} · ${meaning}</span>${query ? `<span class="word-part">${parts[partIndex].name}</span>` : ''}<button class="card-play" type="button" aria-label="播放 ${english}">▶</button>`; const start = () => playWord(english, card); card.addEventListener('click', start); card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); start(); } }); card.querySelector('.card-play').addEventListener('click', e => { e.stopPropagation(); start(); }); grid.append(card); });
+      empty.style.display = matching.length ? 'none' : 'block'; renderTabs();
+    }
+    function setPlayingCard(card) { document.querySelectorAll('.word-card.playing').forEach(item => item.classList.remove('playing')); if (card) card.classList.add('playing'); }
+    function playWord(word, card) {
+      stopAudio(false); currentWord = { word, card }; repeatCount = 0; setPlayingCard(card); startAudio();
+    }
+    function startAudio() {
+      if (!currentWord) return;
+      audio = new Audio(`https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(currentWord.word)}&type=2`);
+      audio.playbackRate = playbackRate;
+      audio.onended = () => { repeatCount += 1; if (repeatCount < 2) { startAudio(); } else if (loopEnabled) { repeatCount = 0; startAudio(); } else { setPlayingCard(null); } };
+      audio.onerror = () => { setPlayingCard(null); };
+      audio.play().catch(() => setPlayingCard(null));
+    }
+    function stopAudio(clear = true) { if (audio) { audio.onended = null; audio.pause(); audio.currentTime = 0; audio = null; } repeatCount = 0; if (clear) { currentWord = null; setPlayingCard(null); } }
+    document.querySelector('#loop').addEventListener('click', e => { loopEnabled = !loopEnabled; e.currentTarget.classList.toggle('active', loopEnabled); e.currentTarget.setAttribute('aria-pressed', loopEnabled); });
+    document.querySelector('#speed').addEventListener('click', e => { playbackRate = playbackRate === 1 ? 0.8 : playbackRate === 0.8 ? 1.2 : 1; e.currentTarget.textContent = `${playbackRate.toFixed(1)}×`; if (audio) audio.playbackRate = playbackRate; });
+    document.querySelector('#play').addEventListener('click', () => { if (currentWord) { stopAudio(false); repeatCount = 0; setPlayingCard(currentWord.card); startAudio(); } });
+    document.querySelector('#stop').addEventListener('click', () => stopAudio());
+    document.querySelector('#search').addEventListener('input', render);
+    render();
   </script>
 </body>
 </html>
