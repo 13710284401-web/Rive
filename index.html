@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2457a6">
+  <title>Unit 1 · Having a good time</title>
+  <style>
+    :root { --blue: #2457a6; --light-blue: #8eace2; --section: #3978cc; --line: #1d2430; --paper: #fffdf8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #151b25; background: #eef3fb; font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif; }
+    .page { width: min(1080px, calc(100% - 28px)); margin: 28px auto; overflow: hidden; border: 2px solid var(--line); border-radius: 10px; background: var(--paper); box-shadow: 0 10px 30px #1b37662b; }
+    header { padding: 18px 22px 15px; text-align: center; color: var(--blue); border-bottom: 2px solid var(--line); }
+    h1 { margin: 0; font-size: clamp(27px, 4vw, 43px); letter-spacing: .025em; }
+    .tools { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 14px 18px; background: #f5f8fe; border-bottom: 1px solid #c9d5eb; }
+    .search { flex: 1 1 260px; position: relative; }
+    .search input { width: 100%; min-height: 42px; padding: 0 14px 0 39px; border: 1px solid #91a8ce; border-radius: 7px; background: white; font-size: 16px; outline-color: var(--blue); }
+    .search span { position: absolute; top: 9px; left: 13px; font-size: 19px; }
+    .rates { display: flex; align-items: center; gap: 7px; }
+    .rates label { font-weight: 700; color: #304b77; white-space: nowrap; }
+    .rate { min-width: 49px; min-height: 39px; padding: 0 8px; border: 1px solid #7798cf; border-radius: 6px; color: #234b8e; background: white; font-weight: 700; cursor: pointer; }
+    .rate:hover, .rate.active { color: white; background: var(--blue); border-color: var(--blue); }
+    .hint { margin: 0; padding: 0 18px 13px; background: #f5f8fe; color: #536277; font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    th, td { height: 48px; padding: 6px 8px; border: 1px solid var(--line); text-align: center; font-size: 17px; }
+    thead th { height: 43px; color: white; background: var(--light-blue); font-size: 20px; }
+    .section td { height: 42px; color: white; background: var(--section); font-weight: 700; font-size: 21px; letter-spacing: .02em; }
+    .number { width: 10.5%; } .word-col { width: 23%; } .ipa { width: 22%; } .type { width: 12.5%; } .meaning { width: 24%; } .play-col { width: 8%; }
+    .word { font-weight: 600; }
+    .play { display: inline-grid; place-items: center; width: 35px; height: 35px; border: 0; border-radius: 50%; color: white; background: var(--blue); cursor: pointer; transition: transform .15s, background .15s; }
+    .play:hover { background: #153b79; transform: scale(1.08); }
+    .play:focus-visible, .rate:focus-visible { outline: 3px solid #ffb02e; outline-offset: 2px; }
+    .play svg { width: 17px; height: 17px; margin-left: 2px; fill: currentColor; }
+    .empty { display: none; padding: 32px; text-align: center; color: #66758b; font-size: 17px; }
+    @media (max-width: 650px) { .page { width: 100%; margin: 0; border-width: 0; border-radius: 0; } .tools { padding: 12px; } .hint { padding: 0 12px 11px; } .table-wrap { overflow-x: auto; } table { min-width: 710px; } th, td { font-size: 16px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header><h1>Unit 1　Having a good time</h1></header>
+    <section class="tools" aria-label="学习工具">
+      <div class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索单词、中文或词性…" aria-label="搜索单词"></div>
+      <div class="rates" aria-label="播放速度"><label>播放速度</label><button class="rate" data-rate="0.75">0.75×</button><button class="rate active" data-rate="1">1×</button><button class="rate" data-rate="1.25">1.25×</button></div>
+    </section>
+    <p class="hint">点击每个单词右侧的播放按钮，即可播放有道词典英式发音。</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th class="number">序号</th><th class="word-col">单词</th><th class="ipa">音标</th><th class="type">词性</th><th class="meaning">中文</th><th class="play-col">播放</th></tr></thead>
+        <tbody id="vocabulary">
+          <tr class="section"><td colspan="6">阅读词汇：What do you do in your FREETIME?</td></tr>
+          <tr data-word="usually"><td>1</td><td class="word">usually</td><td>/ˈjuːʒuəli/</td><td>adv.</td><td>经常；通常</td><td></td></tr>
+          <tr data-word="rarely"><td>2</td><td class="word">rarely</td><td>/ˈreəli/</td><td>adv.</td><td>罕有；很少</td><td></td></tr>
+          <tr data-word="sometimes"><td>3</td><td class="word">sometimes</td><td>/ˈsʌmtaɪmz/</td><td>adv.</td><td>有时候</td><td></td></tr>
+          <tr data-word="never"><td>4</td><td class="word">never</td><td>/ˈnevə(r)/</td><td>adv.</td><td>从不</td><td></td></tr>
+          <tr class="section"><td colspan="6">拓展词汇：兴趣爱好</td></tr>
+          <tr data-word="camping"><td>5</td><td class="word">camping</td><td>/ˈkæmpɪŋ/</td><td>n.</td><td>露营；宿营</td><td></td></tr>
+          <tr data-word="camp"><td>6</td><td class="word">camp</td><td>/kæmp/</td><td>n.</td><td>营帐</td><td></td></tr>
+          <tr data-word="campsite"><td>7</td><td class="word">campsite</td><td>/ˈkæmpsaɪt/</td><td>n.</td><td>野营地</td><td></td></tr>
+          <tr data-word="tent"><td>8</td><td class="word">tent</td><td>/tent/</td><td>n.</td><td>帐篷</td><td></td></tr>
+          <tr data-word="barbecue"><td>9</td><td class="word">barbecue</td><td>/ˈbɑːbɪkjuː/</td><td>n.</td><td>烧烤；户外烧烤</td><td></td></tr>
+          <tr data-word="bicycle"><td>10</td><td class="word">bicycle</td><td>/ˈbaɪsɪkl/</td><td>n.</td><td>自行车</td><td></td></tr>
+          <tr data-word="bike"><td>11</td><td class="word">bike</td><td>/baɪk/</td><td>n.</td><td>自行车</td><td></td></tr>
+          <tr data-word="cycling"><td>12</td><td class="word">cycling</td><td>/ˈsaɪklɪŋ/</td><td>v.</td><td>骑自行车</td><td></td></tr>
+          <tr data-word="reading"><td>13</td><td class="word">reading</td><td>/ˈriːdɪŋ/</td><td>n.</td><td>阅读</td><td></td></tr>
+          <tr data-word="painting"><td>14</td><td class="word">painting</td><td>/ˈpeɪntɪŋ/</td><td>n.</td><td>画画</td><td></td></tr>
+          <tr data-word="writing"><td>15</td><td class="word">writing</td><td>/ˈraɪtɪŋ/</td><td>n.</td><td>写作</td><td></td></tr>
+          <tr data-word="singing"><td>16</td><td class="word">singing</td><td>/ˈsɪŋɪŋ/</td><td>n.</td><td>歌唱</td><td></td></tr>
+          <tr data-word="dancing"><td>17</td><td class="word">dancing</td><td>/ˈdɑːnsɪŋ/</td><td>n.</td><td>跳舞</td><td></td></tr>
+          <tr data-word="playing basketball"><td>18</td><td class="word">playing basketball</td><td>/ˈpleɪɪŋ ˈbɑːskɪtbɔːl/</td><td>phrase</td><td>打篮球</td><td></td></tr>
+          <tr data-word="swimming"><td>19</td><td class="word">swimming</td><td>/ˈswɪmɪŋ/</td><td>n.</td><td>游泳</td><td></td></tr>
+          <tr data-word="hiking"><td>20</td><td class="word">hiking</td><td>/ˈhaɪkɪŋ/</td><td>n.</td><td>徒步</td><td></td></tr>
+          <tr data-word="running"><td>21</td><td class="word">running</td><td>/ˈrʌnɪŋ/</td><td>n.</td><td>跑步</td><td></td></tr>
+          <tr data-word="surfing"><td>22</td><td class="word">surfing</td><td>/ˈsɜːfɪŋ/</td><td>n.</td><td>冲浪</td><td></td></tr>
+          <tr data-word="cooking"><td>23</td><td class="word">cooking</td><td>/ˈkʊkɪŋ/</td><td>n.</td><td>烹饪</td><td></td></tr>
+        </tbody>
+      </table>
+      <p id="empty" class="empty">没有找到匹配的单词。</p>
+    </div>
+  </main>
+  <script>
+    const icon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+    let rate = 1;
+    let currentAudio;
+    document.querySelectorAll('tr[data-word]').forEach((row) => {
+      const word = row.dataset.word;
+      const cell = row.lastElementChild;
+      cell.innerHTML = `<button class="play" type="button" aria-label="播放 ${word} 的发音" title="播放 ${word}">${icon}</button>`;
+      cell.querySelector('button').addEventListener('click', () => {
+        if (currentAudio) currentAudio.pause();
+        currentAudio = new Audio(`https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(word)}&type=2`);
+        currentAudio.playbackRate = rate;
+        currentAudio.play().catch(() => alert('发音加载失败，请检查网络连接后重试。'));
+      });
+    });
+    document.querySelectorAll('.rate').forEach((button) => button.addEventListener('click', () => {
+      rate = Number(button.dataset.rate);
+      document.querySelectorAll('.rate').forEach((item) => item.classList.toggle('active', item === button));
+      if (currentAudio) currentAudio.playbackRate = rate;
+    }));
+    document.querySelector('#search').addEventListener('input', (event) => {
+      const query = event.target.value.trim().toLowerCase();
+      let visible = 0;
+      document.querySelectorAll('tr[data-word]').forEach((row) => {
+        const match = row.textContent.toLowerCase().includes(query);
+        row.hidden = !match;
+        if (match) visible++;
+      });
+      document.querySelectorAll('.section').forEach((section) => {
+        let next = section.nextElementSibling, show = false;
+        while (next && !next.classList.contains('section')) { if (!next.hidden) show = true; next = next.nextElementSibling; }
+        section.hidden = !show;
+      });
+      document.querySelector('#empty').style.display = visible ? 'none' : 'block';
+    });
+  </script>
+</body>
+</html>
