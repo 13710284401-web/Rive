@@ -132,7 +132,15 @@
       utterance.onend = done; utterance.onerror = done; speechSynthesis.speak(utterance);
     }
     function finishWelcome() { welcome.classList.add('leaving'); setTimeout(() => { welcome.hidden = true; learning.classList.add('visible'); learning.setAttribute('aria-hidden', 'false'); }, 430); }
-    document.querySelector('#start').addEventListener('click', () => { speechSynthesis.cancel(); say('welcome to be better studio', 'en-GB', () => say('欢迎来到蓓蓓英语工作室', 'zh-CN', finishWelcome)); });
+    function playSlogan(round = 1) {
+      say('welcome to be better studio', 'en-GB', () => {
+        say('欢迎来到蓓蓓英语工作室', 'zh-CN', () => {
+          if (round < 2) playSlogan(round + 1);
+          else finishWelcome();
+        });
+      });
+    }
+    document.querySelector('#start').addEventListener('click', () => { speechSynthesis.cancel(); playSlogan(); });
 
     function renderTabs() { tabs.innerHTML = ''; parts.forEach((part, index) => { const tab = document.createElement('button'); tab.className = `tab${index === currentPart ? ' active' : ''}`; tab.type = 'button'; tab.textContent = part.name; tab.addEventListener('click', () => { stopAudio(); currentPart = index; document.querySelector('#search').value = ''; render(); }); tabs.append(tab); }); }
     function render() {
